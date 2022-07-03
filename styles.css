@@ -5,7 +5,9 @@
 --tangerine: #fb8500ff; */
 
 html {
-  font-family: "Abel", sans-serif;
+  /* font-family: "Abel", sans-serif; */
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
 }
 
 * {
@@ -13,12 +15,17 @@ html {
 }
 
 body {
-  background-color: #fff;
   margin: 0;
   padding: 0;
 }
 
-h1, .title {
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Archivo', sans-serif;
+  font-weight: 500;
+ }
+
+h1,
+.title {
   text-align: center;
 }
 
@@ -29,15 +36,13 @@ h1, .title {
 }
 
 .button-send {
-  background-color: #ea4c89;
+  background-color: #219ebcff;
   border-radius: 8px;
   border-style: none;
   box-sizing: border-box;
   color: #ffffff;
   cursor: pointer;
   display: inline-block;
-  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial,
-    sans-serif;
   font-size: 14px;
   font-weight: 500;
   height: 40px;
@@ -59,7 +64,7 @@ h1, .title {
 
 .button-send:hover,
 .button-send:focus {
-  background-color: #f082ac;
+  background-color: #ffb703ff;
 }
 
 /* navbar */
@@ -127,6 +132,7 @@ section.banner-section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #ffffff;
 }
 
 .banner-text {
@@ -143,39 +149,62 @@ section.banner-section {
 
 /* about section */
 
-section.about-section {
-  background-color: #ebebf0;
-  padding: 1rem;
+section.intro-section {
+  background-color: #e6e6e6;
+  padding: 5px;
 }
 
+.about-text {
+  margin: 5px;
+  display: flex;
+  flex-wrap: wrap;
+}
 /* projects section */
 .projects-section {
   display: flex;
-  justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 5px;
-}
-.card {
-  display: inline-block;
-  position: relative;
-  color: #344055;
-  margin: 0;
+  flex-direction: column;
 }
 
+.projects-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  box-shadow: 0 0 2px #000;
+}
+
+.card-body {
+  display: flex;
+}
 .card-title {
   text-align: center;
 }
 
-.product-image {
+.card-body-text {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.project-image {
   transition: all 0.3s ease-out;
-  display: inline-block;
+  display: flex;
+  flex: 1;
   position: relative;
   overflow: hidden;
-  height: 100%;
-  width: 100%;
-  display: inline-block;
+  max-width: 150px;
+  max-height: 150px;
+  /* height: 100%;
+  width: 100%; */
 }
+
 /* CONTACT HTML */
 
 .form-container {
@@ -186,7 +215,7 @@ section.about-section {
 form {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 75%;
   background: #e6e6e6;
   border-radius: 8px;
   box-shadow: 0 0 4px #000;
@@ -197,20 +226,24 @@ form {
 
 label {
   display: block;
-  padding: 10px;
+  padding: 5px;
+  font-weight: 700;
 }
 
 input {
   width: 100%;
   padding: 5px;
+  margin-bottom: 15px;
   background: none;
   outline: none;
   resize: none;
   border: 0;
-  border-bottom: 2px solid #bebed2;
+  border-bottom: 2px solid rgb(83, 80, 78);
 }
 
 textarea {
+  font-size: larger;
+  margin-top: 15px;
   line-height: 150%;
   background: none;
   outline: none;
@@ -219,6 +252,7 @@ textarea {
   height: 250px;
   resize: none;
   width: 100%;
+  border-color: rgb(83, 80, 78);
 }
 
 .message {
@@ -242,19 +276,49 @@ footer {
   width: 100%;
   overflow: hidden;
   text-align: right;
+  margin-top: 15px;
   padding-right: 4px;
 }
 
-@media all and (min-width: 1024px) and (max-width: 1280px) {
+/* desktop (default grid) */
+@media all and (min-width: 1280px) {
+  .projects-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+}
+/* tablet landscape */
+@media all and (min-width: 768px) {
 }
 
-@media all and (min-width: 768px) and (max-width: 1024px) {
-}
-
+/* tablet */
 @media all and (min-width: 480px) and (max-width: 768px) {
+  .projects-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .project-image {
+    padding-left: 10px;
+  }
 }
 
+/* phone landscape & smaller */
 @media all and (max-width: 480px) {
+  html {
+    width: 100%;
+  }
+
+  h1.brand-title {
+    opacity: 0;
+  }
+
   /* navbar */
   .navbar {
     flex-direction: column;
@@ -285,5 +349,14 @@ footer {
 
   .navbar-links.active {
     display: flex;
+  }
+
+  .projects-container {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .project-image {
+    display: none;
   }
 }
